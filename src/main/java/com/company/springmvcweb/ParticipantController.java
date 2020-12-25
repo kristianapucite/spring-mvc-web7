@@ -1,8 +1,7 @@
 package com.company.springmvcweb;
 
 
-import com.company.springmvcweb.data.Course;
-import com.company.springmvcweb.data.CourseRepository;
+import com.company.springmvcweb.data.*;
 import com.company.springmvcweb.dto.CourseSearchDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class ParticipantController {
 
     private CourseRepository repo;
+    private ParticipantRepository repo1;
 
     public ParticipantController() {
         repo = new CourseRepository();
+        repo1 = new ParticipantRepository();
     }
 
     @GetMapping("/courses")
@@ -69,7 +70,7 @@ public class ParticipantController {
 
 
         @GetMapping("/courses/{id}")
-    public String editCar(@PathVariable int id, Model model) {
+    public String detailCourse(@PathVariable int id, Model model) {
 
 
         var course = repo.getCourseById(id);
@@ -78,6 +79,34 @@ public class ParticipantController {
         model.addAttribute("id", id);
 
         return "courses_details";
+    }
+
+    @PostMapping("/courses/{id}/register")
+    public String registerForCourses(@PathVariable int id, Model model) {
+
+        var course = repo.getCourseById(id);
+
+        //šis jāizlabo, jāsasaista ar login konta info!!!!!!!
+        var participant = new Participant(0,"Kristaps", "Ozols", "kristaps@inbox.lv", "paroleirforsa",false);
+
+
+        model.addAttribute("title", course != null ? course.getTitle() : "");
+        model.addAttribute("course", course);
+        model.addAttribute("participant", participant);
+        model.addAttribute("name", participant.getName());
+        model.addAttribute("surname", participant.getSurname());
+        model.addAttribute("e-mail", participant.getEMail());
+
+        repo1.registerForCourse(0,id, participant.getId());
+
+        return "courses_details_register";
+    }
+
+
+    @GetMapping("/courses/{id}/register/confirm")
+    public String confirmation(@PathVariable int id, Model model) {
+
+        return "courses_details_register_confirm";
     }
 }
 

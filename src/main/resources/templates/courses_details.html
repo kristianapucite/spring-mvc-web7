@@ -35,34 +35,58 @@
 
     <table>
         <tr>
-            <!--                <th>Id</th>-->
             <th>Title</th>
-            <th>Industry</th>
-            <th>Price, EUR</th>
-            <th>Level</th>
-                            <th>Date, from</th>
-                            <th>Date, to</th>
-            <th>Free slots</th>
-            <th>Max slots</th>
-                            <th>Description</th>
-        </tr>
-
-        </tr>
-<!--        <tr th:each="course: ${courses}">-->
-            <!--                <td th:text="${course.getId()}"/>-->
             <td th:text="${course.getTitle()}"/>
-            <td th:text="${course.getIndustry()}"/>
-            <td th:text="${course.getPrice()}"/>
-            <td th:text="${course.getLevel()}"/>
-                            <td th:text="${course.getDateFrom()}"/>
-                            <td th:text="${course.getDateTo()}"/>
-            <td th:text="${course.getFreeSlots()}"/>
-            <td th:text="${course.getMaxSlots()}"/>
-                            <td th:text="${course.getDescription()}"/>
-
         </tr>
+
+        <tr>
+            <th>Industry</th>
+            <td th:text="${course.getIndustry()}"/>
+        </tr>
+
+        <tr>
+            <th>Price, EUR</th>
+            <td th:text="${course.getPrice()}"/>
+        </tr>
+
+        <tr>
+            <th>Level</th>
+            <td th:text="${course.getLevel()}"/>
+        </tr>
+
+        <tr>
+            <th>Date, from</th>
+            <td th:text="${course.getDateFrom()}"/>
+        </tr>
+
+        <tr>
+            <th>Date, to</th>
+            <td th:text="${course.getDateTo()}"/>
+        </tr>
+
+        <tr>
+            <th>Free slots</th>
+            <td th:text="${course.getFreeSlots()}"/>
+        </tr>
+
+        <tr>
+            <th>Max slots</th>
+            <td th:text="${course.getMaxSlots()}"/>
+        </tr>
+
+        <tr>
+            <th>Description</th>
+            <td th:text="${course.getDescription()}"/>
+        </tr>
+
 
     </table>
+
+    <form method="post" th:action="${'/courses/' + id + '/register'}">
+<!--        <form method="get" action="/courses/{id}">   -->
+    <button type="submit" class="btn btn-success">Register</button>
+
+
 
 
 
@@ -78,6 +102,7 @@
 <!--        <a href="/cars" class="btn btn-danger" role="button">Cancel</a>-->
 <!--        <button type="submit" class="btn btn-success">Save</button>-->
 <!--    </form>-->
+
 
 </div>
 </body>

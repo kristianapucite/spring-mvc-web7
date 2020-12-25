@@ -30,10 +30,11 @@
             </div>
         </div>
     </nav>
-
+    <form method="get" th:action="${'/courses/' + id + '/register'}">
         <h1 th:text="${title}"></h1>
 
     <table>
+
         <tr>
             <th>Title</th>
             <td th:text="${course.getTitle()}"/>
@@ -48,47 +49,39 @@
             <th>Price, EUR</th>
             <td th:text="${course.getPrice()}"/>
         </tr>
-
         <tr>
             <th>Level</th>
             <td th:text="${course.getLevel()}"/>
         </tr>
 
-        <tr>
-            <th>Date, from</th>
-            <td th:text="${course.getDateFrom()}"/>
-        </tr>
-
-        <tr>
-            <th>Date, to</th>
-            <td th:text="${course.getDateTo()}"/>
-        </tr>
-
-        <tr>
-            <th>Free slots</th>
-            <td th:text="${course.getFreeSlots()}"/>
-        </tr>
-
-        <tr>
-            <th>Max slots</th>
-            <td th:text="${course.getMaxSlots()}"/>
-        </tr>
-
-        <tr>
-            <th>Description</th>
-            <td th:text="${course.getDescription()}"/>
-        </tr>
-
 
     </table>
 
-    <form method="post" th:action="${'/courses/' + id + '/register'}">
-<!--        <form method="get" action="/courses/{id}">   -->
-    <button type="submit" class="btn btn-success">Register</button>
+        <br />
+        <table>
+            <tr>
+                <h5>Participant data:</h5>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td th:text="${participant.getName()}"/>
+            </tr>
+            <tr>
+                <th>Surname</th>
+             <td th:text="${participant.getSurname()}"/>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td th:text="${participant.getEMail()}"/>
+        </table>
+    </form>
 
+        <form method="get" th:action="${'/courses/' + id + '/register/confirm'}">
 
+        <button type="submit" class="btn btn-success">Confirm</button>
 
-
+<!--            <h1 th:text="${title}"></h1>-->
+<!--            <p> Registration has been successful, you will receive an e-mail with payment details</p>-->
 
 <!--    <form method="post" th:action="${'/cars/' + id}" name="updateDto">-->
 <!--        <div class="mb-3">-->
@@ -102,7 +95,6 @@
 <!--        <a href="/cars" class="btn btn-danger" role="button">Cancel</a>-->
 <!--        <button type="submit" class="btn btn-success">Save</button>-->
 <!--    </form>-->
-
 
 </div>
 </body>

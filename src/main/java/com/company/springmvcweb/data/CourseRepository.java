@@ -21,8 +21,9 @@ public class CourseRepository {
                     configure().
                     addAnnotatedClass(Participant.class).
                     addAnnotatedClass(Course.class).
+                    addAnnotatedClass(CourseParticipant.class).
                     buildSessionFactory();
-//            factory = new Configuration().configure("com/company/hibernate/hibernate.cfg.xml").buildSessionFactory();
+//           factory = new Configuration().configure("com/company/hibernate/hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);

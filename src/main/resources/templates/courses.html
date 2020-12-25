@@ -58,42 +58,42 @@
 
         </div>
 
-<!--        <button type="submit" class="btn btn-primary">Search</button>-->
+        <!--        <button type="submit" class="btn btn-primary">Search</button>-->
         <button type="submit" class="btn btn-success">Search</button>
 
     </form>
 
     <table>
-            <tr>
-<!--                <th>Id</th>-->
-                <th>Title</th>
-                <th>Industry</th>
-                <th>Price, EUR</th>
-                <th>Level</th>
-<!--                <th>Date, from</th>-->
-<!--                <th>Date, to</th>-->
-                <th>Free slots</th>
-                <th>Max slots</th>
-<!--                <th>Description</th>-->
-            </tr>
+        <tr>
+            <!--                <th>Id</th>-->
+            <th>Title</th>
+            <th>Industry</th>
+            <th>Price, EUR</th>
+            <th>Level</th>
+            <!--                <th>Date, from</th>-->
+            <!--                <th>Date, to</th>-->
+            <th>Free slots</th>
+            <th>Max slots</th>
+            <!--                <th>Description</th>-->
+        </tr>
 
-            </tr>
-            <tr th:each="course: ${courses}">
-<!--                <td th:text="${course.getId()}"/>-->
-                <td>
-                    <a th:href="${'/courses/'+course.getId}" th:text="${course.getTitle()}"></a>
-                </td>
+        </tr>
+        <tr th:each="course: ${courses}">
+            <!--                <td th:text="${course.getId()}"/>-->
+            <td>
+                <a th:href="${'/courses/'+course.getId}" th:text="${course.getTitle()}"></a>
+            </td>
 
-                <td th:text="${course.getIndustry()}"/>
-                <td th:text="${course.getPrice()}"/>
-                <td th:text="${course.getLevel()}"/>
-<!--                <td th:text="${course.getDateFrom()}"/>-->
-<!--                <td th:text="${course.getDateTo()}"/>-->
-                <td th:text="${course.getFreeSlots()}"/>
-                <td th:text="${course.getMaxSlots()}"/>
-<!--                <td th:text="${course.getDescription()}"/>-->
+            <td th:text="${course.getIndustry()}"/>
+            <td th:text="${course.getPrice()}"/>
+            <td th:text="${course.getLevel()}"/>
+            <!--                <td th:text="${course.getDateFrom()}"/>-->
+            <!--                <td th:text="${course.getDateTo()}"/>-->
+            <td th:text="${course.getFreeSlots()}"/>
+            <td th:text="${course.getMaxSlots()}"/>
+            <!--                <td th:text="${course.getDescription()}"/>-->
 
-            </tr>
+        </tr>
 
     </table>
 </div>
