@@ -83,17 +83,17 @@ public class CourseRepository {
         try {
             var sql = "FROM Course";
 
-            if(searchDto.getIndustry() != null || searchDto.getLevel() != null ){
+            if (searchDto.getIndustry() != null || searchDto.getLevel() != null) {
                 sql += " where ";
             }
 
-            if(searchDto.getIndustry() != null ){
+            if (searchDto.getIndustry() != null) {
                 sql += " industry = :search_industry";
 
             }
 
-            if(searchDto.getLevel() != null ){
-                if (searchDto.getIndustry() != null ) {
+            if (searchDto.getLevel() != null) {
+                if (searchDto.getIndustry() != null) {
 
                     sql += " and ";
                 }
@@ -102,11 +102,11 @@ public class CourseRepository {
             var query = session.createQuery(sql);
 
 
-            if(searchDto.getIndustry()!= null ){
+            if (searchDto.getIndustry() != null) {
                 query.setParameter("search_industry", searchDto.getIndustry());
             }
 
-            if(searchDto.getLevel() != null ){
+            if (searchDto.getLevel() != null) {
                 query.setParameter("search_level", searchDto.getLevel());
             }
 
@@ -120,7 +120,6 @@ public class CourseRepository {
         }
         return new ArrayList();
     }
-
 
 
     //view all courses per price range
@@ -160,6 +159,23 @@ public class CourseRepository {
 
         try {
             return (Integer) session.createQuery("SELECT id FROM Participant where e_mail='" + eMail + "'").uniqueResult();
+
+        } catch (HibernateException exception) {
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    public Participant getParticipantPerId(int id) {
+        var session = factory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            var participant = session.get(Participant.class, id);
+            return participant;
 
         } catch (HibernateException exception) {
             System.err.println(exception);

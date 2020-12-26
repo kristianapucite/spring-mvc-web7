@@ -32,9 +32,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="javax.persistence:javax.persistence-api:2.2" level="project" />
-    <orderEntry type="library" name="org.hibernate:hibernate-core:5.4.0.Final" level="project" />
-    <orderEntry type="library" name="mysql:mysql-connector-java:8.0.22" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-thymeleaf:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.4.0" level="project" />
@@ -104,5 +101,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
+    <orderEntry type="library" name="org.hibernate:hibernate-core:5.4.0.Final" level="project" />
+    <orderEntry type="library" name="org.projectlombok:lombok:1.18.2" level="project" />
   </component>
 </module>

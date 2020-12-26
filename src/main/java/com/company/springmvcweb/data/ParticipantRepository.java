@@ -69,16 +69,29 @@ public class ParticipantRepository {
         return false;
     }
 
+
     // login to the website
-    public boolean logIn(String eMail, String passwordEntered){
-        if (checkIfEmailIsRegistered(eMail)){
-            var participantId = getParticipantIdFromEmail(eMail);
-            var passwordSaved = getSavedPassword(participantId);
-            if (passwordEntered.equals(passwordSaved))  {
-                return true;
+    public Participant logIn(String eMail, String password){
+
+        var part1 = getParticipantIdFromEmail(eMail);
+        var part2 = getParticipantIdFromPassword(password);
+
+        var session = factory.openSession();
+
+        if (part1 == part2) {
+
+            try {
+                var user = session.get(Participant.class, part1);
+                return user;
+            } catch (HibernateException exception) {
+                System.err.println(exception);
+            } finally {
+                session.close();
             }
         }
-        return false;
+        return null;
+
+
     }
 
     //get participant ID based on registered e-mail address
@@ -87,6 +100,22 @@ public class ParticipantRepository {
 
         try {
             var result = (Integer) session.createQuery("SELECT id FROM Participant where e_mail='" + eMail + "'").uniqueResult();
+            if (result != null) {
+                return result;
+            }
+        } catch (HibernateException exception) {
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+        return 0;
+    }
+
+    public Integer getParticipantIdFromPassword(String password) {
+        var session = factory.openSession();
+
+        try {
+            var result = (Integer) session.createQuery("SELECT id FROM Participant where password ='" + password + "'").uniqueResult();
             if (result != null) {
                 return result;
             }
